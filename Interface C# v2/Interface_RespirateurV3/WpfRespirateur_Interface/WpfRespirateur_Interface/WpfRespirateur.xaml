@@ -1,0 +1,193 @@
+﻿<Window x:Class="WpfRespirateur_Interface.WpfRespirateurInterface"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfRespirateur_Interface"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:oscillo="clr-namespace:WpfOscilloscopeControl;assembly=WpfOscilloscopeControl"
+        mc:Ignorable="d"
+        Title="Interface Respirateur" Height="858" Width="1044">
+
+    <Grid x:Name="GridApplication" Background="#222222">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+        <oscillo:WpfOscilloscope x:Name="oscilloRespiration" Grid.Column="1" Grid.Row="1" Padding="20" MouseDoubleClick="ZoomOnGraph_MouseDoubleClick"/>
+        <GroupBox Grid.ColumnSpan="1" Grid.Column="1" Header="Informations" HorizontalAlignment="Stretch"  Margin="0,0,0,-0" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Stretch" FontSize="16" Foreground="#FFECECF2">
+            <ScrollViewer Name="scrollViewerDebugOption" FontSize="16">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Header="Session Information" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="1" VerticalAlignment="Stretch">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Label Name="labelSessionStart" Content="Session start:" Grid.Row="0" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Foreground="White" FontSize="22"/>
+                            <Label Name="labelSessionStop" Content="Session Stop:" Grid.Row="1" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Foreground="White" FontSize="22"/>
+                            <Label Name="labelSessionDuree" Content="Session Time:" Grid.Row="2" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Foreground="White" FontSize="22"/>
+
+                        </Grid>
+                    </GroupBox>
+                    <Button Name="ButtonStartStop" Content="START" HorizontalAlignment="Stretch" Margin="10,10,10,10" VerticalAlignment="Stretch" Grid.ColumnSpan="1" Click="ButtonStartStop_Click"/>
+                    <GroupBox Grid.ColumnSpan="1" Grid.Column="1" Header="Params" HorizontalAlignment="Stretch"  Margin="0,0,0,-0" Grid.Row="1" Grid.RowSpan="1" VerticalAlignment="Stretch" FontSize="16">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <GroupBox Header="Plimit" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="0" Grid.RowSpan="1" Grid.ColumnSpan="1" VerticalAlignment="Stretch" FontSize="12">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Name="SetPlimit" Content="Set Plimit" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="1" Click="SetPlimit_Click"/>
+                                    <TextBox Name="TexBoxSetPlimit" Text="50,0" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="0" Grid.ColumnSpan="1"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Vlimit" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="1" Grid.RowSpan="1" Grid.ColumnSpan="1" VerticalAlignment="Stretch" FontSize="12">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Name="SetVlimit" Content="Set Plimit" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="1" Click="SetVlimit_Click"/>
+                                    <TextBox Name="TexBoxSetVlimit" Text="50,0" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="0" Grid.ColumnSpan="1"/>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.ColumnSpan="1" Grid.Column="3" Header="Advanced" HorizontalAlignment="Stretch"  Margin="0,0,0,-0" Grid.Row="0" Grid.RowSpan="3" VerticalAlignment="Stretch" FontSize="16">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <GroupBox Header="Do Steps" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="0" Grid.RowSpan="1" Grid.ColumnSpan="2" VerticalAlignment="Stretch" FontSize="12">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button Name="DoStep" Content="Do Steps" HorizontalAlignment="Stretch" Margin="5,5,5,5" Grid.Row="1" VerticalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="1" Click="DoStep_Click"/>
+                                    <xctk:IntegerUpDown Name="myUpDownControlDoSteps"  HorizontalAlignment="Stretch" Grid.Row="1" Margin="5,5,5,5" Grid.Column="0" Maximum="500" Minimum="-500" Value="1"  />
+                                    <ComboBox Name="comboBoxMotorNum" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="0" Margin="5,5,5,5" VerticalAlignment="Stretch">
+                                        <ComboBoxItem Content="Moteur 1" IsSelected="True"/>
+                                        <ComboBoxItem Content="Moteur 2"/>
+                                        <ComboBoxItem Content="Moteur 3"/>
+                                    </ComboBox>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Set Amplitude" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="1" Grid.RowSpan="1" Grid.ColumnSpan="2" VerticalAlignment="Stretch" FontSize="12">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Name="ButtonSetAmplitude" Content="Set" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="2" Grid.ColumnSpan="1" Click="ButtonSetAmplitude_Click"/>
+                                    <xctk:IntegerUpDown Name="myUpDownControlAmplitude"  HorizontalAlignment="Stretch" Margin="5,5,5,5" Grid.Column="1" Maximum="10000" Minimum="1" Value="475"  />
+                                    <Label Name="labelAmplitude" Content="Curr Val:" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="0" Foreground="White" FontSize="15"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Set Step offset Up" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="2" Grid.RowSpan="1" Grid.ColumnSpan="2" VerticalAlignment="Stretch" FontSize="12">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Name="labelOffsetUp" Content="Curr Val:" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="0" Foreground="White" FontSize="15"/>
+                                    <Button Name="ButtonSetOffsetUp" Content="Set" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="2" Grid.ColumnSpan="1" Click="ButtonSetOffsetUp_Click"/>
+                                    <xctk:IntegerUpDown Name="myUpDownControlOffsetUp"  HorizontalAlignment="Stretch" Margin="5,5,5,5" Grid.Column="1" Maximum="300" Minimum="1" Value="0"  />
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Set Step offset Down" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="3" Grid.RowSpan="1" Grid.ColumnSpan="2" VerticalAlignment="Stretch" FontSize="12">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Name="labelOffsetDown" Content="Curr Val:" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="0" Foreground="White" FontSize="15"/>
+                                    <Button Name="ButtonSetOffsetDown" Content="Set" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="2" Grid.ColumnSpan="1" Click="ButtonSetOffsetDown_Click"/>
+                                    <xctk:IntegerUpDown Name="myUpDownControlOffsetDown"  HorizontalAlignment="Stretch" Margin="5,5,5,5" Grid.Column="1" Maximum="300" Minimum="1" Value="0"  />
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Set Step Pause Time Up" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="4" Grid.RowSpan="1" Grid.ColumnSpan="2" VerticalAlignment="Stretch" FontSize="12">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Name="labelPauseTimeUp" Content="Curr Val:" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="0" Foreground="White" FontSize="15"/>
+                                    <Button Name="ButtonSetPauseTimeUp" Content="Set" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="2" Grid.ColumnSpan="1" Click="ButtonSetPauseTimeUp_Click"/>
+                                    <TextBox Name="TexBoxSetPauseTimeUp" Text="1,0" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="1"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Set Step Pause Time Down" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="5" Grid.RowSpan="1" Grid.ColumnSpan="2" VerticalAlignment="Stretch" FontSize="12">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Name="labelPauseTimeDown" Content="Curr Val:" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="0" Foreground="White" FontSize="15"/>
+                                    <Button Name="ButtonSetPauseTimeDown" Content="Set" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="2" Grid.ColumnSpan="1" Click="ButtonSetPauseTimeDown_Click"/>
+                                    <TextBox Name="TexBoxSetPauseTimeDown" Text="1,0" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="1"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Set Speed" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="6" Grid.RowSpan="1" Grid.ColumnSpan="2" VerticalAlignment="Stretch" FontSize="12">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Name="labelSpeed" Content="Curr Val:" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="0" Foreground="White" FontSize="15"/>
+                                    <Button Name="ButtonSetSpeed" Content="Set" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="2" Grid.ColumnSpan="1" Click="ButtonSetSpeed_Click"/>
+                                    <TextBox Name="TexBoxSetSpeed" Text="70,0" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="1"/>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </ScrollViewer>
+        </GroupBox>
+    </Grid>
+</Window>
